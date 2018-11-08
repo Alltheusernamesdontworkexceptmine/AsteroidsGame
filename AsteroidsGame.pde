@@ -1,28 +1,42 @@
 Spaceship regenald;
-PImage outerSpace;
+//PImage outerSpace;
 boolean keyBoard[] = new boolean [4];
-Star regenaldTheSecond[] = new Star [50];
+Star regenaldTheSecond[] = new Star [1000];
+Particle[] regenald1;
 public void setup() 
 {
   size(1000,1000);
-  outerSpace = loadImage("butterflynebula.jpeg");
+   regenald1 = new Particle[1000];
+  for(int i=0; i<regenald1.length; i++)
+  {
+    regenald1[i] = new Star();
+  }
+  regenald1[0] = new OddballParticle();
+  //outerSpace = loadImage("butterflynebula.jpeg");
   regenald = new Spaceship();
   for(int i=0; i< regenaldTheSecond.length; i++){regenaldTheSecond[i] = new Star();}
 }
 public void draw() 
 {
-  background(0);
-  image(outerSpace,0,0,width,height);
+  fill(0,10);
+  rect(0,0,width,height);
+  noStroke();
+  //image(outerSpace,0,0,width,height);
   regenald.show();
   regenald.move();
   for(int i=0; i<regenaldTheSecond.length; i++){regenaldTheSecond[i].show();}
   for (int i = 0; i < keyBoard.length; i++) 
   {
     if (keyBoard[0]){regenald.accelerate(0.0125);}
-    if (keyBoard[1]){regenald.turn(-0.7);}
+    if (keyBoard[1]){regenald.turn(1);}
     if (keyBoard[2]){regenald.accelerate(-0.0125);}
-    if (keyBoard[3]){regenald.turn(0.7);}
+    if (keyBoard[3]){regenald.turn(-1);}
   }
+  for(int i=0; i<regenald1.length; i++)
+   {
+     regenald1[i].show();
+     regenald1[i].move();
+   }  
 }
 public void keyPressed(){
   if (key == 'w' || key == 'W') {keyBoard[0] = true;}

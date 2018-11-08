@@ -1,14 +1,64 @@
-class Star //note that this class does NOT extend Floater
+class Star implements Particle
 {
-  private double myX, myY, mySize;
-  public Star() {
-    myX = (Math.random()*width);
-    myY = (Math.random()*height);
-    mySize = (Math.random()*5)+5;
+  double myX,myY,myAngle,mySpeed;
+  int myColor;
+  Star()
+  {
+  myX=mouseX;
+  myY=mouseY;
+  myAngle = Math.random()*2*Math.PI;
+  mySpeed = Math.random()*9;
+  myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
   }
-  public void show(){
-    fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-    noStroke();
-    ellipse((float)myX,(float)myY, (float)mySize, (float)mySize);
+  void move()
+   {
+     myX=myX+Math.cos(myAngle)*mySpeed;
+     myY=myY+Math.sin(mySpeed)%myAngle;
+     myAngle=myAngle+0.01;
+     mySpeed=mySpeed+0.01;
+     if((myX>1000)||(myX<0)||(myY>1000)||(myY<0))
+    {
+      myX= mouseX;
+      myY= mouseY;
+    }
+   }
+   void show()
+   {
+     fill(myColor);
+     ellipse((float)myX,(float)myY,(int)(Math.random()*5),(int)(Math.random()*5));
+   }
+   
+}
+interface Particle
+{
+  public void show();
+  public void move();
+}
+class OddballParticle implements Particle//uses an interface
+{
+  int startX, startY, myColor;
+  OddballParticle()
+  {
+  startX=startY=400;
+  myColor = color(188,58,7);
   }
+  public void move()
+   {
+     startX=startX+(int)(Math.random()*10);
+   }
+   public void show()
+   {
+     fill(myColor);
+     rect(startX,startY,100,100);
+   }
+   void mousePressed(){
+  //myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+  regenald1 = new Particle[4000];
+  for(int i = 0; i < regenald1.length; i++){
+    regenald1[i] = new Star();
+
+  }
+  regenald1[0] = new OddballParticle();
+}
+
 }
