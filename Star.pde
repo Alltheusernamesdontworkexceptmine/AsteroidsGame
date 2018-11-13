@@ -25,6 +25,7 @@ class Star implements Particle
    void show()
    {
      fill(myColor);
+     noStroke();
      ellipse((float)myX,(float)myY,(int)(Math.random()*5),(int)(Math.random()*5));
    }
    

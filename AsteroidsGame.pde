@@ -11,14 +11,13 @@ public void setup()
   {
     regenald1[i] = new Star();
   }
-  regenald1[0] = new OddballParticle();
   //outerSpace = loadImage("butterflynebula.jpeg");
   regenald = new Spaceship();
   for(int i=0; i< regenaldTheSecond.length; i++){regenaldTheSecond[i] = new Star();}
 }
 public void draw() 
 {
-  fill(0,10);
+  fill(0,1000);
   rect(0,0,width,height);
   noStroke();
   //image(outerSpace,0,0,width,height);
