@@ -1,32 +1,31 @@
 class Star implements Particle
 {
-  double myX,myY,myAngle,mySpeed;
+  double myX,myY,myAngle,mySpeed,myHehe;
   int myColor;
   Star()
   {
-  myX=mouseX;
-  myY=mouseY;
+  myX = myY = 400;
   myAngle = Math.random()*2*Math.PI;
-  mySpeed = Math.random()*9;
+  mySpeed = Math.random()*5;
   myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+  myHehe = Math.random()*20;
   }
   void move()
    {
      myX=myX+Math.cos(myAngle)*mySpeed;
-     myY=myY+Math.sin(mySpeed)%myAngle;
+     myY=myY+Math.sin(myAngle)*mySpeed;
      myAngle=myAngle+0.01;
-     mySpeed=mySpeed+0.01;
+     //mySpeed=mySpeed+0.01;
      if((myX>1000)||(myX<0)||(myY>1000)||(myY<0))
     {
-      myX= mouseX;
-      myY= mouseY;
+      myX= myY = 400;
     }
    }
    void show()
    {
      fill(myColor);
      noStroke();
-     ellipse((float)myX,(float)myY,(int)(Math.random()*5),(int)(Math.random()*5));
+     ellipse((float)myX,(float)myY,(int)(Math.random()*7),(int)(Math.random()*7));
    }
    
 }
@@ -59,7 +58,6 @@ class OddballParticle implements Particle//uses an interface
     regenald1[i] = new Star();
 
   }
-  regenald1[0] = new OddballParticle();
 }
 
 }

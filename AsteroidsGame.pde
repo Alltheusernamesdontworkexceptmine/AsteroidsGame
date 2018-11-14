@@ -6,7 +6,7 @@ Particle[] regenald1;
 public void setup() 
 {
   size(1000,1000);
-   regenald1 = new Particle[1000];
+   regenald1 = new Particle[5000];
   for(int i=0; i<regenald1.length; i++)
   {
     regenald1[i] = new Star();
@@ -17,7 +17,7 @@ public void setup()
 }
 public void draw() 
 {
-  fill(0,1000);
+  fill(0,100);
   rect(0,0,width,height);
   noStroke();
   //image(outerSpace,0,0,width,height);
