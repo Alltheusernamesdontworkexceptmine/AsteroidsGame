@@ -1,5 +1,6 @@
 Spaceship regenald;
 //PImage outerSpace;
+Asteroids regenaldTheThird[] = new Asteroids[20];
 boolean keyBoard[] = new boolean [4];
 Star regenaldTheSecond[] = new Star [1000];
 Particle[] regenald1;
@@ -14,6 +15,7 @@ public void setup()
   //outerSpace = loadImage("butterflynebula.jpeg");
   regenald = new Spaceship();
   for(int i=0; i< regenaldTheSecond.length; i++){regenaldTheSecond[i] = new Star();}
+  for (int i = 0; i < regenaldTheThird.length; i++){regenaldTheThird[i] = new Asteroids();}
 }
 public void draw() 
 {
@@ -24,6 +26,10 @@ public void draw()
   regenald.show();
   regenald.move();
   for(int i=0; i<regenaldTheSecond.length; i++){regenaldTheSecond[i].show();}
+  for (int i = 0; i < regenaldTheThird.length; i++){
+    regenaldTheThird[i].show();
+    regenaldTheThird[i].move();
+  }
   for (int i = 0; i < keyBoard.length; i++) 
   {
     if (keyBoard[0]){regenald.accelerate(0.0125);}
