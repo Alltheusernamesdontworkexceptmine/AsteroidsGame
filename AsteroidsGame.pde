@@ -1,6 +1,6 @@
 Spaceship regenald;
 //PImage outerSpace;
-Asteroids regenaldTheThird[] = new Asteroids[20];
+Asteroids regenaldTheThird[] = new Asteroids[10];
 boolean keyBoard[] = new boolean [4];
 Star regenaldTheSecond[] = new Star [1000];
 Particle[] regenald1;
@@ -19,7 +19,7 @@ public void setup()
 }
 public void draw() 
 {
-  fill(0,100);
+  fill(0,10);
   rect(0,0,width,height);
   noStroke();
   //image(outerSpace,0,0,width,height);

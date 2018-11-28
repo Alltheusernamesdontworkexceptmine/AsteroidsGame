@@ -1,6 +1,6 @@
 class Star implements Particle
 {
-  double myX,myY,myAngle,mySpeed,myHehe;
+  double myX,myY,myAngle,mySpeed;
   int myColor;
   Star()
   {
@@ -8,15 +8,14 @@ class Star implements Particle
   myAngle = Math.random()*2*Math.PI;
   mySpeed = Math.random()*5;
   myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-  myHehe = Math.random()*20;
   }
   void move()
    {
-     myX=myX+Math.cos(myAngle)*mySpeed;
-     myY=myY+Math.sin(myAngle)*mySpeed;
-     myAngle=myAngle+0.01;
+     myX=myX+Math.cos(myAngle)%mySpeed;
+     myY=myY+Math.sin(myAngle)%mySpeed;
+     myAngle=myAngle-0.001;
      //mySpeed=mySpeed+0.01;
-     if((myX>1000)||(myX<0)||(myY>1000)||(myY<0))
+     if((myX>2000)||(myX<0)||(myY>2000)||(myY<0))
     {
       myX= myY = 400;
     }
@@ -25,7 +24,7 @@ class Star implements Particle
    {
      fill(myColor);
      noStroke();
-     ellipse((float)myX,(float)myY,(int)(Math.random()*7),(int)(Math.random()*7));
+     ellipse((float)myX,(float)myY,(int)(Math.random()*3),(int)(Math.random()*3));
    }
    
 }
