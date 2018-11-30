@@ -1,6 +1,6 @@
 Spaceship regenald;
 //PImage outerSpace;
-Asteroids regenaldTheThird[] = new Asteroids[10];
+ArrayList <Asteroids> regenaldTheThird = new ArrayList <Asteroids>();
 boolean keyBoard[] = new boolean [4];
 Star regenaldTheSecond[] = new Star [1000];
 Particle[] regenald1;
@@ -15,20 +15,23 @@ public void setup()
   //outerSpace = loadImage("butterflynebula.jpeg");
   regenald = new Spaceship();
   for(int i=0; i< regenaldTheSecond.length; i++){regenaldTheSecond[i] = new Star();}
-  for (int i = 0; i < regenaldTheThird.length; i++){regenaldTheThird[i] = new Asteroids();}
+  for (int i = 0; i < 30; i++){regenaldTheThird.add(new Asteroids());}
 }
 public void draw() 
 {
-  fill(0,10);
+  fill(0,1000);
   rect(0,0,width,height);
   noStroke();
   //image(outerSpace,0,0,width,height);
   regenald.show();
   regenald.move();
   for(int i=0; i<regenaldTheSecond.length; i++){regenaldTheSecond[i].show();}
-  for (int i = 0; i < regenaldTheThird.length; i++){
-    regenaldTheThird[i].show();
-    regenaldTheThird[i].move();
+  for (int i = 0; i < regenaldTheThird.size(); i++){
+    regenaldTheThird.get(i).show();
+    regenaldTheThird.get(i).move();
+    float d = dist(regenald.getX(),regenald.getY(), regenaldTheThird.get(i).getX(), regenaldTheThird.get(i).getY());
+    if(d < 20)
+      regenaldTheThird.remove(i);
   }
   for (int i = 0; i < keyBoard.length; i++) 
   {
@@ -45,9 +48,9 @@ public void draw()
 }
 public void keyPressed(){
   if (key == 'w' || key == 'W') {keyBoard[0] = true;}
-  if (key == 'a' || key == 'A') {keyBoard[1] = true;}
+  if (key == 'a' || key == 'A') {keyBoard[3] = true;}
   if (key == 's' || key == 'S') {keyBoard[2] = true;}
-  if (key == 'd' || key == 'D') {keyBoard[3] = true;}
+  if (key == 'd' || key == 'D') {keyBoard[1] = true;}
   if (key == 'h' || key == 'H') {
     regenald.setX((int)(Math.random()*width));
     regenald.setY((int)(Math.random()*height));
@@ -58,7 +61,7 @@ public void keyPressed(){
  }
 public void keyReleased(){
   if (key == 'w' || key == 'W') {keyBoard[0] = false;}
-  if (key == 'a' || key == 'A') {keyBoard[1] = false;}
+  if (key == 'a' || key == 'A') {keyBoard[3] = false;}
   if (key == 's' || key == 'S') {keyBoard[2] = false;}
-  if (key == 'd' || key == 'D') {keyBoard[3] = false;}
+  if (key == 'd' || key == 'D') {keyBoard[1] = false;}
 }
