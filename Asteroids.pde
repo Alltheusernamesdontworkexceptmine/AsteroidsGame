@@ -12,9 +12,9 @@ class Asteroids extends Floater{
    public double getPointDirection(){return (int)myPointDirection;}
    public Asteroids(){
     if(Math.random() < 0.5){
-      rotDirection = 10;
+      rotDirection = 100;
     }else{
-      rotDirection = -10; 
+      rotDirection = -100; 
     }
     rotSpeed = rotDirection * (int)(Math.random()*PI + 1);
     corners = 6;

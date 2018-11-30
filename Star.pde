@@ -11,8 +11,8 @@ class Star implements Particle
   }
   void move()
    {
-     myX=myX+Math.cos(myAngle)/mySpeed;
-     myY=myY+Math.sin(myAngle)/mySpeed;
+     myX=myX+Math.cos(myAngle)%(float)mySpeed;
+     myY=myY+Math.sin(myAngle)%(float)mySpeed;
      myAngle=myAngle-0.001;
      //mySpeed=mySpeed+0.01;
      if((myX>1000)||(myX<0)||(myY>1000)||(myY<0))
@@ -23,7 +23,7 @@ class Star implements Particle
    void show()
    {
      fill(myColor);
-     noStroke();
+     //noStroke();
      rect((float)myX,(float)myY,(int)(Math.random()*5),(int)(Math.random()*5));
    }
    
