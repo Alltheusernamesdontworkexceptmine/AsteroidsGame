@@ -2,12 +2,12 @@ Spaceship regenald;
 //PImage outerSpace;
 ArrayList <Asteroids> regenaldTheThird = new ArrayList <Asteroids>();
 boolean keyBoard[] = new boolean [4];
-Star regenaldTheSecond[] = new Star [200];
+Star regenaldTheSecond[] = new Star [1];
 Particle[] regenald1;
 public void setup() 
 {
   size(1000,1000);
-   regenald1 = new Particle[5000];
+   regenald1 = new Particle[2000];
   for(int i=0; i<regenald1.length; i++)
   {
     regenald1[i] = new Star();
@@ -20,12 +20,13 @@ public void setup()
 public void draw() 
 {
   if (key == 'h' || key == 'H') {
-    fill(0,10);
+    fill(0,(int)(Math.random()*10));
     rect(0,0,width,height);
-    noStroke();
+    //noStroke();
   }
-  else 
+  else{
     background(0);
+  }
   //image(outerSpace,0,0,width,height);
   regenald.show();
   regenald.move();
