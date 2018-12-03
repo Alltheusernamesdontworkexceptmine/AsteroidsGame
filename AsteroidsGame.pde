@@ -7,7 +7,7 @@ Particle[] regenald1;
 public void setup() 
 {
   size(1000,1000);
-   regenald1 = new Particle[2000];
+   regenald1 = new Particle[1000];
   for(int i=0; i<regenald1.length; i++)
   {
     regenald1[i] = new Star();
