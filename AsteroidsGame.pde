@@ -22,6 +22,10 @@ public void draw()
   if (key == 'h' || key == 'H') {
     fill(0,(int)(Math.random()*10));
     rect(0,0,width,height);
+    for (int i = 0; i < regenaldTheThird.size(); i++){
+    regenaldTheThird.get(i).setX((int)Math.random()*100);
+    regenaldTheThird.get(i).setY((int)Math.random()*100);
+    }
     //noStroke();
   }
   else{
