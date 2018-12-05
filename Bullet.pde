@@ -9,14 +9,14 @@ class Bullet extends Floater{
    public double getDirectionY(){return myDirectionY;}
    public void setPointDirection(int degrees){myPointDirection = degrees;}
    public double getPointDirection(){return (int)myPointDirection;}
-   Bullet(Spaceship regenald){
-     myColor = color(0,255,0);
-     myCenterX = regenald.getX();
-     myCenterY = regenald.getY();
-     myPointDirection = regenald.getPointDirection();
+   Bullet(Spaceship v){
+     myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+     myCenterX=v.getX();
+     myCenterY=v.getY();
+     myPointDirection = v.getPointDirection();
      double dRadians = myPointDirection*(Math.PI/180);
-     myDirectionX = 5*Math.cos(dRadians)+regenald.myDirectionX;
-     myDirectionY = 5*Math.sin(dRadians)+regenald.myDirectionY;
+     myDirectionX = 5*Math.cos(dRadians)+v.myDirectionX;
+     myDirectionY = 5*Math.sin(dRadians)+v.myDirectionY;
    }
      public void show (){  //Draws the floater at the current position              
         fill(myColor);   
@@ -32,10 +32,33 @@ class Bullet extends Floater{
         rotate(dRadians);
         
         //draw the circular bullet
-        ellipse(100,100,100,100);
+        ellipse((float)0,(float)0,30,10);
     
         //"unrotate" and "untranslate" in reverse order
         rotate(-1*dRadians);
         translate(-1*(float)myCenterX, -1*(float)myCenterY);
       }   
-   }
+      public void move ()   //move the floater in the current direction of travel
+  {      
+    //change the x and y coordinates by myDirectionX and myDirectionY       
+    myCenterX += myDirectionX;    
+    myCenterY += myDirectionY;    
+    if(myCenterX >width)
+    {     
+      myCenterX = 0;    
+    }    
+    else if (myCenterX<0)
+    {     
+      myCenterX = width;    
+    }    
+    if(myCenterY >height)
+    {    
+      myCenterY = 0;    
+    } 
+    
+    else if (myCenterY < 0)
+    {     
+      myCenterY = height;    
+    }   
+  }
+}
