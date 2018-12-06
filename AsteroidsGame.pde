@@ -2,7 +2,7 @@ Spaceship regenald;
 //PImage outerSpace;
 ArrayList <Asteroids> regenaldTheThird = new ArrayList <Asteroids>();
 ArrayList <Bullet> regenaldTheForth = new ArrayList<Bullet>();
-boolean keyBoard[] = new boolean [4];
+boolean keyBoard[] = new boolean [5];
 Star regenaldTheSecond[] = new Star [1];
 Particle[] regenald1;
 public void setup() 
@@ -17,8 +17,8 @@ public void setup()
   regenald = new Spaceship();
   for(int i=0; i< regenaldTheSecond.length; i++){regenaldTheSecond[i] = new Star();}
   for (int i = 0; i < 70; i++){regenaldTheThird.add(new Asteroids());}
-  for (int k = 0; k < 10; k++){regenaldTheForth.add(new Bullet(regenald));}
-  //regenaldTheForth.add(new Bullet(regenald));
+  //for (int k = 0; k < 1; k++){regenaldTheForth.add(new Bullet(regenald));}
+  regenaldTheForth.add(new Bullet(regenald));
 }
 public void draw() 
 {
@@ -47,8 +47,10 @@ public void draw()
   
   }
   for (int k = 0; k < regenaldTheForth.size(); k++){
-    regenaldTheForth.get(k).show();
-    regenaldTheForth.get(k).move();
+    if (keyBoard[4]){
+      regenaldTheForth.get(k).show();
+      regenaldTheForth.get(k).move();
+    }
   }
   for (int i = 0; i < keyBoard.length; i++) 
   {
@@ -68,6 +70,10 @@ public void keyPressed(){
   if (key == 'a' || key == 'A') {keyBoard[3] = true;}
   if (key == 's' || key == 'S') {keyBoard[2] = true;}
   if (key == 'd' || key == 'D') {keyBoard[1] = true;}
+  if (key == ' '){
+    keyBoard[4] = true;
+    regenaldTheForth.add(new Bullet(regenald));
+  }
   if (key == 'h' || key == 'H') {
     regenald.setX((int)(Math.random()*width));
     regenald.setY((int)(Math.random()*height));
@@ -81,4 +87,5 @@ public void keyReleased(){
   if (key == 'a' || key == 'A') {keyBoard[3] = false;}
   if (key == 's' || key == 'S') {keyBoard[2] = false;}
   if (key == 'd' || key == 'D') {keyBoard[1] = false;}
+  //if (key == ' '){keyBoard[4] = false;}
 }

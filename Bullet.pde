@@ -13,10 +13,10 @@ class Bullet extends Floater{
      myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
      myCenterX=v.getX();
      myCenterY=v.getY();
-     myPointDirection = v.getPointDirection();
+     myPointDirection = v.getPointDirection()-(int)(Math.random()*20)-5;
      double dRadians = myPointDirection*(Math.PI/180);
-     myDirectionX = 5*Math.cos(dRadians)+v.myDirectionX;
-     myDirectionY = 5*Math.sin(dRadians)+v.myDirectionY;
+     myDirectionX = 5*Math.cos(dRadians)+v.getDirectionX();
+     myDirectionY = 5*Math.sin(dRadians)+v.getDirectionY();
    }
      public void show (){  //Draws the floater at the current position              
         fill(myColor);   
@@ -32,7 +32,7 @@ class Bullet extends Floater{
         rotate(dRadians);
         
         //draw the circular bullet
-        ellipse((float)0,(float)0,30,10);
+        ellipse((float)0,(float)0,5,10);
     
         //"unrotate" and "untranslate" in reverse order
         rotate(-1*dRadians);
