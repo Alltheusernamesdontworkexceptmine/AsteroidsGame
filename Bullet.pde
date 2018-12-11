@@ -13,14 +13,15 @@ class Bullet extends Floater{
      myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
      myCenterX=v.getX();
      myCenterY=v.getY();
-     myPointDirection = v.getPointDirection()-(int)(Math.random()*20)-5;
+     myPointDirection = v.getPointDirection();
      double dRadians = myPointDirection*(Math.PI/180);
      myDirectionX = 5*Math.cos(dRadians)+v.getDirectionX();
      myDirectionY = 5*Math.sin(dRadians)+v.getDirectionY();
    }
      public void show (){  //Draws the floater at the current position              
         fill(myColor);   
-        stroke(myColor);    
+        //stroke(myColor);  
+        noStroke();
         
         //translate the (x,y) center of the ship to the correct position
         translate((float)myCenterX, (float)myCenterY);
@@ -32,7 +33,7 @@ class Bullet extends Floater{
         rotate(dRadians);
         
         //draw the circular bullet
-        ellipse((float)0,(float)0,5,10);
+        rect((float)0,(float)0,20,10);
     
         //"unrotate" and "untranslate" in reverse order
         rotate(-1*dRadians);
@@ -42,23 +43,6 @@ class Bullet extends Floater{
   {      
     //change the x and y coordinates by myDirectionX and myDirectionY       
     myCenterX += myDirectionX;    
-    myCenterY += myDirectionY;    
-    if(myCenterX >width)
-    {     
-      myCenterX = 0;    
-    }    
-    else if (myCenterX<0)
-    {     
-      myCenterX = width;    
-    }    
-    if(myCenterY >height)
-    {    
-      myCenterY = 0;    
-    } 
-    
-    else if (myCenterY < 0)
-    {     
-      myCenterY = height;    
-    }   
+    myCenterY += myDirectionY;       
   }
 }

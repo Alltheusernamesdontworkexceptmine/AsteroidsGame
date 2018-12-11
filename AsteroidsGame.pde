@@ -16,9 +16,9 @@ public void setup()
   //outerSpace = loadImage("butterflynebula.jpeg");
   regenald = new Spaceship();
   for(int i=0; i< regenaldTheSecond.length; i++){regenaldTheSecond[i] = new Star();}
-  for (int i = 0; i < 70; i++){regenaldTheThird.add(new Asteroids());}
-  //for (int k = 0; k < 1; k++){regenaldTheForth.add(new Bullet(regenald));}
-  regenaldTheForth.add(new Bullet(regenald));
+  for (int i = 0; i < 200; i++){regenaldTheThird.add(new Asteroids());}
+  for (int k = 0; k < 1; k++){regenaldTheForth.add(new Bullet(regenald));}
+  //regenaldTheForth.add(new Bullet(regenald));
 }
 public void draw() 
 {
@@ -41,17 +41,21 @@ public void draw()
   for (int i = 0; i < regenaldTheThird.size(); i++){
     regenaldTheThird.get(i).show();
     regenaldTheThird.get(i).move();
-    float d = dist(regenald.getX(),regenald.getY(), regenaldTheThird.get(i).getX(), regenaldTheThird.get(i).getY());
-    if(d < 20)
-      regenaldTheThird.remove(i);
-  
-  }
-  for (int k = 0; k < regenaldTheForth.size(); k++){
-    if (keyBoard[4]){
-      regenaldTheForth.get(k).show();
-      regenaldTheForth.get(k).move();
+    for (int k = 0; k < regenaldTheForth.size(); k++){
+        float d = dist(regenaldTheThird.get(i).getX(), regenaldTheThird.get(i).getY(), regenaldTheForth.get(k).getX(), regenaldTheForth.get(k).getY());
+          if(d < 20){
+            regenaldTheThird.remove(i);
+            break;
+          }
+      }
     }
+   for(int d = 0; d< regenaldTheForth.size(); d++){
+   if (keyBoard[4]){
+        regenaldTheForth.get(d).show();
+        regenaldTheForth.get(d).move();
+     }
   }
+
   for (int i = 0; i < keyBoard.length; i++) 
   {
     if (keyBoard[0]){regenald.accelerate(0.0125);}
