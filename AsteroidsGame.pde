@@ -1,5 +1,6 @@
 Spaceship regenald;
 //PImage outerSpace;
+public int Score = 0;
 ArrayList <Asteroids> regenaldTheThird = new ArrayList <Asteroids>();
 ArrayList <Bullet> regenaldTheForth = new ArrayList<Bullet>();
 boolean keyBoard[] = new boolean [5];
@@ -8,7 +9,7 @@ Particle[] regenald1;
 public void setup() 
 {
   size(1000,1000);
-   regenald1 = new Particle[1000];
+  regenald1 = new Particle[1000];
   for(int i=0; i<regenald1.length; i++)
   {
     regenald1[i] = new Star();
@@ -29,10 +30,12 @@ public void draw()
     regenaldTheThird.get(i).setX((int)Math.random()*100);
     regenaldTheThird.get(i).setY((int)Math.random()*100);
     }
-    //noStroke();
   }
   else{
     background(0);
+    fill(255,255,255,255);
+    textSize(40);
+    text("Score:"+Score,10,100);
   }
   //image(outerSpace,0,0,width,height);
   regenald.show();
@@ -45,6 +48,7 @@ public void draw()
         float d = dist(regenaldTheThird.get(i).getX(), regenaldTheThird.get(i).getY(), regenaldTheForth.get(k).getX(), regenaldTheForth.get(k).getY());
           if(d < 20){
             regenaldTheThird.remove(i);
+            Score++;
             break;
           }
       }
