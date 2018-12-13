@@ -35,7 +35,7 @@ public void draw()
     background(0);
     fill(255,255,255,255);
     textSize(40);
-    text("Score:"+Score,10,100);
+    text("Sͣ̉̍̑̿̎̑̑̓̚͢͡͡͠҉͙̙̮̟͙c̨̯̟̥̹͇̝̘͖̥̞̪̼̪̓̾̊͛ͫͦ̀̎͢͜ͅo̧̻̩̭̻̦̦̗̩̜͇ͪ̅͋̋͊̒͊͝͠r̶̛͍̜̭̤̙͉͂͊ͮ̏͝e̸̊̐ͮ̐̉͊́́͏͙̤̣̖̣̖͓̦̞̫̤̻͍͖͟ͅ:̴̳̝̭̰̥̰̳͓̠̒̿̐̐̓̃̏̓́̕͢"+Score,10,100);
   }
   //image(outerSpace,0,0,width,height);
   regenald.show();
